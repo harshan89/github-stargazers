@@ -7,7 +7,7 @@
 }
 
 body {
-  padding: 0 2em;
+  padding-top: 2em;
 }
 
 ::-webkit-scrollbar {
@@ -27,8 +27,13 @@ body {
   background: #dfdfdf;
 }
   .repo-list {
-    height: 100vh;
+    height: 600px;
+    width: 1080px;
+    margin: 0 auto;
     overflow-y: scroll;
+    border: 1px solid #f1f1f1;
+    padding: 1em 2em;
+    background-color: #fffcfc;
 
     .loadingText {
       text-align: center;
