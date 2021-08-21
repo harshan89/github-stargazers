@@ -20,7 +20,7 @@ function RepositoryList() {
         if (listInnerRef.current) {
             const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
 
-            if (scrollTop + clientHeight === scrollHeight) {
+            if (scrollTop + clientHeight >= (scrollHeight-100)) {
                 fetchMore({
                     variables: {
                         after: repositories[repositories.length -1].cursor,
@@ -51,14 +51,13 @@ function RepositoryList() {
             {repositories.length > 0 && repositories.map((repository, key) => {
                 const node = repository.node;
 
-                return <div className="product-list-wrapper">
-                    <div key={key} className="repo-card">
+                return <div key={key} className="repo-card">
                         <div className="image-holder">
                             <img src={node.openGraphImageUrl} alt=""/>
                         </div>
                         <div className="repo-info">
                             <h1>{node.name}</h1>
-                            <p>{`${node.description.substring(0, 100)}`}</p>
+                            <p>{node.description}</p>
                             <div className='issues-stars'>
                                 <label>Start: {kFormatter(node.stargazers.totalCount)}</label>
                                 <label>Issues: {kFormatter(node.issues.totalCount)}</label>
@@ -66,7 +65,6 @@ function RepositoryList() {
                             </div>
                         </div>
                     </div>
-                </div>
             })}
         </div>
     )
